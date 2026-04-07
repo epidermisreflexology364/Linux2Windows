@@ -1,0 +1,3 @@
+# Runtime dependencies - l2w itself uses only the standard library.
+# PyInstaller is needed only when building the standalone .exe.
+pyinstaller>=6.0

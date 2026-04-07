@@ -1,0 +1,26 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(dir C:\\\\Users\\\\Andre\\\\cyberProd\\\\LTT:*)",
+      "Bash(python:*)",
+      "Bash(gh auth:*)",
+      "Bash(git init:*)",
+      "Bash(git add:*)",
+      "Bash(git commit:*)",
+      "Bash(gh repo:*)",
+      "Bash(git push:*)",
+      "Bash(git remote:*)",
+      "Bash(pip install:*)",
+      "Bash(pyinstaller:*)",
+      "Bash(./dist/l2w.exe --list)",
+      "Bash(./dist/l2w.exe --dry-run rm -rf build/)",
+      "Bash(echo \"exit: $?\")",
+      "Bash(./dist/l2w.exe --dry-run grep -i error app.log)",
+      "Bash(./dist/l2w.exe --info cp)",
+      "Bash(gh release:*)",
+      "Bash(./dist/l2w.exe --install-wrappers C:/Users/Andre/cyberProd/LTT/test_wrappers)",
+      "Bash(./dist/l2w.exe --dry-run ls -la)",
+      "Bash(git checkout:*)"
+    ]
+  }
+}

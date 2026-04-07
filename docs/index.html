@@ -1,0 +1,932 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+  <title>l2w - Linux to Windows :: THE OFFICIAL HOME PAGE ::</title>
+  <style type="text/css">
+
+    body {
+      background-color: #000000;
+      color: #00ff00;
+      font-family: "Comic Sans MS", "Times New Roman", serif;
+      font-size: 13px;
+      margin: 10px;
+    }
+
+    a:link    { color: #ff00ff; text-decoration: underline; }
+    a:visited { color: #ffff00; }
+    a:hover   { color: #ff0000; font-size: 15px; }
+
+    /* ---- blink ---- */
+    .blink  { animation: blink  0.8s step-start infinite; }
+    .blink2 { animation: blink  0.4s step-start infinite; }
+    .blink3 { animation: blink  1.5s step-start infinite; }
+    @keyframes blink { 50% { opacity: 0; } }
+
+    /* ---- rainbow title ---- */
+    .rainbow {
+      font-weight: bold;
+      font-size: 30px;
+      font-family: "Comic Sans MS", cursive;
+      background: linear-gradient(90deg,
+        #ff0000,#ff7700,#ffff00,#00ff00,#0000ff,#8b00ff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    /* ---- dividers ---- */
+    .rainbow-bar {
+      height: 8px;
+      margin: 14px 0;
+      background: linear-gradient(90deg,
+        #ff0000,#ff7700,#ffff00,#00ff00,#00ffff,#0000ff,#8b00ff);
+    }
+    .flame-bar {
+      height: 16px;
+      margin: 14px 0;
+      position: relative;
+      overflow: hidden;
+      background: #000;
+    }
+    .flame-bar::before {
+      content: "";
+      position: absolute;
+      top: 0; left: -100%;
+      width: 300%;
+      height: 100%;
+      background: repeating-linear-gradient(90deg,
+        #ff0000 0px, #ff4400 10px, #ff8800 20px,
+        #ffcc00 30px, #ff8800 40px, #ff4400 50px, #ff0000 60px);
+      animation: flameroll 0.6s linear infinite;
+      box-shadow: 0 0 12px #ff4400, 0 0 24px #ff0000;
+    }
+    @keyframes flameroll { to { left: 0%; } }
+
+    /* ---- spinning star (CSS-only) ---- */
+    .star-spin {
+      display: inline-block;
+      font-size: 28px;
+      color: #ffff00;
+      text-shadow: 0 0 8px #ffff00, 0 0 16px #ff8800;
+      animation: starspin 1.8s linear infinite;
+      line-height: 1;
+    }
+    @keyframes starspin {
+      0%   { transform: rotate(0deg)   scale(1);   color: #ffff00; }
+      25%  { transform: rotate(90deg)  scale(1.3); color: #ff8800; }
+      50%  { transform: rotate(180deg) scale(1);   color: #ff0000; }
+      75%  { transform: rotate(270deg) scale(1.3); color: #ff00ff; }
+      100% { transform: rotate(360deg) scale(1);   color: #ffff00; }
+    }
+
+    /* ---- spinning globe (CSS-only) ---- */
+    .globe {
+      display: inline-block;
+      width: 48px; height: 48px;
+      border-radius: 50%;
+      background: radial-gradient(circle at 35% 35%,
+        #0088ff, #004499, #001133);
+      box-shadow: 0 0 10px #0044ff, inset -6px -4px 10px rgba(0,0,80,0.6);
+      position: relative;
+      animation: globespin 3s linear infinite;
+      vertical-align: middle;
+    }
+    .globe::after {
+      content: "";
+      position: absolute;
+      top: 20%; left: 5%; width: 90%; height: 12%;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.15);
+      transform: rotate(-15deg);
+    }
+    @keyframes globespin {
+      0%   { box-shadow: 0 0 10px #0044ff, inset -6px -4px 10px rgba(0,0,80,0.6); }
+      50%  { box-shadow: 0 0 18px #00aaff, inset  6px -4px 10px rgba(0,0,80,0.6); }
+      100% { box-shadow: 0 0 10px #0044ff, inset -6px -4px 10px rgba(0,0,80,0.6); }
+    }
+
+    /* ---- construction sign (CSS-only) ---- */
+    .construction {
+      display: inline-block;
+      background: #ffcc00;
+      color: #000000;
+      font-family: Arial, sans-serif;
+      font-weight: bold;
+      font-size: 11px;
+      padding: 4px 10px;
+      border: 3px solid #000;
+      animation: constrobe 0.9s step-start infinite;
+    }
+    @keyframes constrobe {
+      0%  { background: #ffcc00; color: #000; border-color: #000; }
+      50% { background: #000;    color: #ffcc00; border-color: #ffcc00; }
+    }
+
+    /* ---- floppy disk (CSS-only) ---- */
+    .floppy {
+      display: inline-block;
+      width: 38px; height: 38px;
+      background: #333;
+      border: 2px solid #888;
+      border-radius: 3px;
+      position: relative;
+      vertical-align: middle;
+      animation: floppywobble 0.5s ease-in-out infinite alternate;
+    }
+    .floppy::before {
+      content: "";
+      position: absolute;
+      top: 4px; left: 6px;
+      width: 26px; height: 10px;
+      background: #888;
+      border-radius: 1px;
+    }
+    .floppy::after {
+      content: "";
+      position: absolute;
+      bottom: 4px; left: 50%;
+      transform: translateX(-50%);
+      width: 14px; height: 14px;
+      background: #555;
+      border-radius: 50%;
+      border: 2px solid #888;
+    }
+    @keyframes floppywobble {
+      from { transform: rotate(-5deg); }
+      to   { transform: rotate(5deg); }
+    }
+
+    /* ---- envelope (CSS-only) ---- */
+    .envelope {
+      display: inline-block;
+      width: 40px; height: 28px;
+      background: #ffffcc;
+      border: 2px solid #888;
+      border-radius: 2px;
+      position: relative;
+      vertical-align: middle;
+      animation: envflap 1s ease-in-out infinite;
+    }
+    .envelope::before {
+      content: "";
+      position: absolute;
+      top: 0; left: 0;
+      width: 0; height: 0;
+      border-left:  20px solid transparent;
+      border-right: 20px solid transparent;
+      border-top:   14px solid #cccc99;
+    }
+    .envelope::after {
+      content: "";
+      position: absolute;
+      top: 0; left: 0;
+      width: 0; height: 0;
+      border-left:  20px solid transparent;
+      border-right: 20px solid transparent;
+      border-bottom: 14px solid #eeeeaa;
+      animation: envflap2 1s ease-in-out infinite;
+      transform-origin: top center;
+    }
+    @keyframes envflap  { 50% { transform: scaleY(1.08); } }
+    @keyframes envflap2 { 0%,100% { transform: rotateX(0deg); } 50% { transform: rotateX(40deg); } }
+
+    /* ---- award badge (CSS-only) ---- */
+    .badge {
+      display: inline-block;
+      width: 56px; height: 56px;
+      border-radius: 50%;
+      background: radial-gradient(circle, #ffdd00, #ff8800);
+      border: 4px solid #ffff00;
+      box-shadow: 0 0 10px #ffaa00;
+      animation: badgepulse 1.2s ease-in-out infinite;
+      position: relative;
+      vertical-align: middle;
+    }
+    .badge::before {
+      content: "1st";
+      position: absolute;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      font-family: Arial, sans-serif;
+      font-weight: bold;
+      font-size: 12px;
+      color: #000;
+    }
+    @keyframes badgepulse {
+      0%,100% { transform: scale(1);    box-shadow: 0 0 10px #ffaa00; }
+      50%      { transform: scale(1.12); box-shadow: 0 0 20px #ffdd00; }
+    }
+
+    /* ---- "NEW!" badge (CSS-only) ---- */
+    .newbadge {
+      display: inline-block;
+      background: #ff0000;
+      color: #ffff00;
+      font-family: Arial, sans-serif;
+      font-weight: bold;
+      font-size: 13px;
+      padding: 2px 8px;
+      border: 2px solid #ffff00;
+      animation: newpulse 0.6s step-start infinite;
+      vertical-align: middle;
+    }
+    @keyframes newpulse {
+      0%  { background: #ff0000; color: #ffff00; }
+      50% { background: #ffff00; color: #ff0000; }
+    }
+
+    /* ---- text styles ---- */
+    .glow      { text-shadow: 0 0 8px #00ff00, 0 0 16px #00ff00; color: #00ff00; }
+    .fire-text { color: #ff6600; text-shadow: 0 0 6px #ff0000, 0 0 12px #ff6600; font-weight: bold; }
+
+    pre, code {
+      background-color: #001100;
+      color: #00ff00;
+      font-family: "Courier New", monospace;
+      font-size: 12px;
+      border: 1px solid #00ff00;
+      padding: 6px;
+    }
+
+    .cmd-table {
+      border: 2px solid #00ff00;
+      border-collapse: collapse;
+      font-size: 11px;
+      font-family: "Courier New", monospace;
+      width: 100%;
+    }
+    .cmd-table th {
+      background-color: #003300;
+      color: #00ff00;
+      padding: 4px 8px;
+      border: 1px solid #00ff00;
+      text-align: left;
+    }
+    .cmd-table td {
+      padding: 3px 8px;
+      border: 1px solid #006600;
+      color: #ccffcc;
+    }
+    .cmd-table tr:hover { background-color: #002200; }
+
+    .award-box {
+      border: 3px ridge #ffff00;
+      background-color: #111100;
+      padding: 10px;
+      text-align: center;
+      display: inline-block;
+      margin: 6px;
+      width: 150px;
+      vertical-align: top;
+    }
+
+    .section-title {
+      font-size: 18px;
+      font-family: "Comic Sans MS", cursive;
+      color: #ffff00;
+      text-shadow: 2px 2px #ff0000;
+      border-bottom: 2px dashed #ff00ff;
+      padding: 4px 0 6px 0;
+      margin-top: 22px;
+      margin-bottom: 12px;
+    }
+
+    .counter {
+      font-family: "Courier New", monospace;
+      font-size: 24px;
+      color: #ff0000;
+      background: #000000;
+      border: 0px inset #808080;
+      padding: 0px 12px;
+      letter-spacing: 5px;
+
+    }
+
+    marquee { color: #ffff00; font-weight: bold; font-family: "Comic Sans MS", cursive; }
+
+    .bubble {
+      border: 2px solid #00ffff;
+      background: #001a1a;
+      color: #00ffff;
+      padding: 10px 14px;
+      font-size: 12px;
+      margin: 10px 0;
+    }
+
+    .warning-box {
+      border: 4px solid #ff0000;
+      background: #1a0000;
+      color: #ff4444;
+      padding: 12px;
+      text-align: center;
+      font-size: 14px;
+      font-weight: bold;
+      margin: 10px 0;
+    }
+
+    .faq-q { color: #ffff00; font-weight: bold; margin-top: 14px; display: block; }
+    .faq-a { color: #ccffcc; margin-left: 16px; display: block; margin-bottom: 4px; }
+
+    p { margin: 8px 0 10px 0; line-height: 1.6; }
+
+  </style>
+</head>
+<body>
+
+<center>
+<table width="820" border="0" cellpadding="0" cellspacing="0">
+<tr><td>
+
+<!-- ============================================================ HEADER -->
+<center>
+
+<span class="star-spin">*</span>
+&nbsp;&nbsp;
+<span class="rainbow">* l2w - LINUX TO WINDOWS *</span>
+&nbsp;&nbsp;
+<span class="star-spin">*</span>
+
+<br><br>
+
+<span class="globe"></span>
+&nbsp;&nbsp;&nbsp;
+<span class="construction">&nbsp;UNDER CONSTRUCTION&nbsp;</span>
+&nbsp;&nbsp;&nbsp;
+<span class="globe"></span>
+
+</center>
+
+<br>
+
+<div class="flame-bar"></div>
+
+<marquee behavior="scroll" direction="left" scrollamount="4"
+         style="background:#000066; padding:4px; font-size:13px;">
+  &nbsp;
+  *** WELCOME TO THE GREATEST WEBSITE IN THE HISTORY OF COMPUTING ***
+  &nbsp;&nbsp;&nbsp; :: This site has been visited by AT LEAST 7 people :: &nbsp;&nbsp;&nbsp;
+  :: NOW WITH MORE ANIMATED GIFS :: &nbsp;&nbsp;&nbsp;
+  :: Your computer may slow down. This is normal and your fault for visiting. :: &nbsp;&nbsp;&nbsp;
+  :: BEST VIEWED IN NETSCAPE NAVIGATOR 3.0 AT 800x600 :: &nbsp;&nbsp;&nbsp;
+  :: THIS MARQUEE SCROLLS FOREVER AND THERE IS NOTHING YOU CAN DO ABOUT IT ::
+  &nbsp;
+</marquee>
+
+<div class="flame-bar"></div>
+
+<br>
+
+<!-- WARNING BOX -->
+<div class="warning-box">
+  <span class="newbadge">!!!</span>
+  &nbsp;
+  <span class="blink">WARNING</span>
+  &nbsp;
+  <span class="newbadge">!!!</span>
+  <br><br>
+  This page contains animated elements.
+  Your 2003 Pentium 4 running Windows ME will experience performance issues.
+  <br>
+  <span class="blink2">WE ARE NOT RESPONSIBLE. YOU CHOSE TO VISIT.</span>
+</div>
+
+<br>
+
+<!-- ============================================================ ABOUT -->
+<p class="section-title">
+  [ *** ] ABOUT THIS PROGRAM [ *** ]
+</p>
+
+<table width="100%" border="0" cellpadding="8" cellspacing="0">
+<tr>
+<td width="64%" valign="top">
+
+<p class="glow"><b>GREETINGS TRAVELLER AND WELCOME TO MY CORNER OF THE INTERNET.</b></p>
+
+<p>
+  My name is Andrew and I made this tool because I am lazy.
+  Not regular lazy. <span class="blink" style="color:#ff00ff;">SPECIAL lazy.</span>
+  The kind of lazy where instead of spending 10 minutes learning that
+  <code>ls</code> is <code>dir</code> on Windows,
+  I spent <b>several hours</b> writing a translation engine,
+  a test suite, a standalone executable, a website, and an installer.
+</p>
+
+<p>
+  To be clear: the time I spent building this tool is approximately
+  <span class="fire-text">400 times longer</span> than it would have taken
+  to just memorise the commands.
+</p>
+
+<p>
+  <span class="blink3" style="color:#00ffff;">I regret nothing.</span>
+</p>
+
+</td>
+<td width="36%" valign="top" align="center">
+
+<table border="3" bordercolor="#ff00ff" bgcolor="#110011"
+       cellpadding="8" cellspacing="0" width="100%">
+<tr><td align="center">
+
+  <span style="color:#ff00ff; font-weight:bold; font-family:Arial; font-size:13px;">
+    SITE STATS
+  </span>
+
+  <br><br>
+
+  <table border="0" cellpadding="3" width="100%">
+    <tr>
+      <td style="color:#aaaaaa; font-size:11px;">Version:</td>
+      <td style="color:#ffff00; font-size:11px;"><b>1.0.0</b>
+        &nbsp;<span class="newbadge" style="font-size:9px; padding:1px 4px;">NEW</span>
+      </td>
+    </tr>
+    <tr>
+      <td style="color:#aaaaaa; font-size:11px;">Commands:</td>
+      <td style="color:#ffff00; font-size:11px;"><b>50+</b></td>
+    </tr>
+    <tr>
+      <td style="color:#aaaaaa; font-size:11px;">Tests:</td>
+      <td style="color:#ffff00; font-size:11px;"><b>38 passing</b></td>
+    </tr>
+    <tr>
+      <td style="color:#aaaaaa; font-size:11px;">Platform:</td>
+      <td style="color:#ffff00; font-size:11px;"><b>Windows only</b></td>
+    </tr>
+    <tr>
+      <td style="color:#aaaaaa; font-size:11px;">Usefulness:</td>
+      <td style="color:#ffff00; font-size:11px;"><b>debatable</b></td>
+    </tr>
+    <tr>
+      <td style="color:#aaaaaa; font-size:11px;">License:</td>
+      <td style="color:#ffff00; font-size:11px;"><b>MIT / FREE</b></td>
+    </tr>
+  </table>
+
+  <br>
+
+  <span style="color:#cccccc; font-size:10px;">YOU ARE VISITOR NUMBER</span>
+  <br>
+  <span class="counter">0000007</span>
+  <br>
+  <span style="font-size:9px; color:#666666;">(my mum counts as 3)</span>
+
+</td></tr>
+</table>
+
+<br>
+
+<table border="2" bordercolor="#ffff00" bgcolor="#111100"
+       cellpadding="6" width="100%">
+<tr><td align="center">
+  <span style="color:#ffff00; font-size:10px; font-family:Arial; font-weight:bold;">
+    THIS SITE CERTIFIED BY:
+  </span>
+  <br>
+  <span style="font-size:10px; color:#aaaaaa;">
+    Nobody. I certified it myself.<br>It still counts.
+  </span>
+</td></tr>
+</table>
+
+</td>
+</tr>
+</table>
+
+<div class="rainbow-bar"></div>
+
+<!-- ============================================================ DOWNLOAD -->
+<p class="section-title">
+  <span class="newbadge">NEW!</span>
+  &nbsp; DOWNLOAD &nbsp;
+  <span class="newbadge">FREE!</span>
+</p>
+
+<center>
+
+<span class="floppy"></span>
+&nbsp;&nbsp;&nbsp;
+<span class="floppy"></span>
+&nbsp;&nbsp;&nbsp;
+<span class="floppy"></span>
+
+<br><br>
+
+<div class="bubble" style="display:inline-block; max-width:580px; text-align:left;">
+  <b>GOOD NEWS!</b> You do not need Python, Java, .NET, DirectX,
+  QuickTime, RealPlayer, the Macromedia Flash Plugin, the Shockwave Plugin,
+  or a Yahoo Toolbar to run this.
+  <br><br>
+  It is <b>ONE FILE</b>. You download it. You run it. It installs itself.
+  Open a new terminal and type Linux commands. That is it.
+  <br><br>
+  <span class="blink2" style="color:#ff0000;">
+    IT IS THAT EASY AND I CANNOT BELIEVE I HAVE TO SAY THIS
+  </span>
+</div>
+
+<br><br>
+
+<table border="0" cellspacing="12">
+<tr>
+  <td align="center" valign="top">
+    <table border="3" bordercolor="#00ff00" bgcolor="#002200" cellpadding="12">
+    <tr><td align="center">
+      <span style="color:#00ff00; font-size:14px; font-weight:bold;">STANDALONE .EXE</span>
+      <br><br>
+      <span style="color:#aaaaaa; font-size:11px;">
+        No Python required.<br>
+        No installer wizard.<br>
+        No "would you like a toolbar?"<br>
+        No "your computer may be at risk".<br>
+        Just double-click. Done.
+      </span>
+      <br><br>
+      <a href="https://github.com/Andrew-most-likely/l2w/releases"
+         style="background:#00aa00; color:#000000; padding:6px 14px;
+                font-weight:bold; font-family:Arial; font-size:13px;
+                text-decoration:none; border:2px outset #00ff00;
+                display:inline-block;">
+        &gt;&gt; DOWNLOAD l2w.exe &lt;&lt;
+      </a>
+      <br><br>
+      <span style="color:#888888; font-size:10px;">
+        7MB. Your 56k modem can handle it.<br>
+        Estimated download time on dial-up: 18 minutes.<br>
+        Please do not tie up the phone line.
+      </span>
+    </td></tr>
+    </table>
+  </td>
+  <td align="center" valign="top">
+    <table border="3" bordercolor="#ff00ff" bgcolor="#1a0033" cellpadding="12">
+    <tr><td align="center">
+      <span style="color:#ff00ff; font-size:14px; font-weight:bold;">SOURCE CODE</span>
+      <br><br>
+      <span style="color:#aaaaaa; font-size:11px;">
+        For people who don't trust<br>
+        random .exe files from the internet.<br>
+        Very smart. Good instinct.<br>
+        I respect your caution.<br>
+        You are right to be suspicious.
+      </span>
+      <br><br>
+      <a href="https://github.com/Andrew-most-likely/l2w"
+         style="background:#aa00aa; color:#ffffff; padding:6px 14px;
+                font-weight:bold; font-family:Arial; font-size:13px;
+                text-decoration:none; border:2px outset #ff00ff;
+                display:inline-block;">
+        &gt;&gt; VIEW ON GITHUB &lt;&lt;
+      </a>
+      <br><br>
+      <span style="color:#888888; font-size:10px;">
+        pip install -e .<br>
+        Yes you need Python for this one.<br>
+        No, I cannot change that.
+      </span>
+    </td></tr>
+    </table>
+  </td>
+</tr>
+</table>
+
+</center>
+
+<div class="flame-bar"></div>
+
+<!-- ============================================================ HOW IT WORKS -->
+<p class="section-title">[***] HOW TO USE IT [***]</p>
+
+<table width="100%" border="0" cellpadding="6">
+<tr>
+<td width="70%" valign="top">
+
+<p>
+  <b style="color:#ffff00;">STEP 1:</b>
+  Download the .exe. Double-click it. It installs itself.
+  No wizard. No "next next next agree finish". Just done.
+</p>
+
+<p>
+  <b style="color:#ffff00;">STEP 2:</b>
+  Open a new Command Prompt or PowerShell window.
+</p>
+
+<p>
+  <b style="color:#ffff00;">STEP 3:</b>
+  Type Linux commands. They work now.
+  <span class="blink" style="color:#00ffff;">MAGIC. ACTUAL MAGIC.</span>
+</p>
+
+<pre>
+  ls -la                   &lt;-- runs: dir /a
+  grep -i "error" app.log  &lt;-- runs: findstr /i error app.log
+  rm -rf build/            &lt;-- runs: rmdir /s /q build/
+  cp -r src/ dest/         &lt;-- runs: xcopy /e /i src/ dest/
+  tail -f app.log          &lt;-- runs: Get-Content -Wait
+</pre>
+
+<p>Preview without running (for when you are sweating):</p>
+<pre>  l2w --dry-run rm -rf everything/</pre>
+
+<p>See every supported command:</p>
+<pre>  l2w --list</pre>
+
+</td>
+<td width="30%" valign="middle" align="center">
+
+<span class="star-spin" style="font-size:48px;">*</span>
+<br>
+<span style="font-size:10px; color:#00ff00; font-weight:bold;">IT WORKS</span>
+<br>
+<span style="font-size:10px; color:#888888;">I tested it.</span>
+
+<br><br>
+
+<span class="construction">STEP 3 IS THE GOOD PART</span>
+
+</td>
+</tr>
+</table>
+
+<div class="rainbow-bar"></div>
+
+<!-- ============================================================ COMMAND TABLE -->
+<p class="section-title">
+  [=] THE HOLY TRANSLATION TABLE [=]
+  <br>
+  <span style="font-size:11px; color:#888888; font-weight:normal;">
+    50+ commands memorised so you don't have to be
+  </span>
+</p>
+
+<table class="cmd-table">
+<tr>
+  <th>Linux (what your hands type by default)</th>
+  <th>Windows (what actually runs)</th>
+  <th>Notes from the person who wrote this at 2am</th>
+</tr>
+<tr><td>ls</td><td>dir</td><td>-a for hidden files</td></tr>
+<tr><td>cp</td><td>copy / xcopy</td><td>auto-uses xcopy /e /i when you pass -r</td></tr>
+<tr><td>mv</td><td>move</td><td></td></tr>
+<tr><td>rm</td><td>del / rmdir</td><td>auto-uses rmdir /s /q when you pass -r</td></tr>
+<tr><td>mkdir</td><td>mkdir</td><td>surprisingly the same. one win for consistency.</td></tr>
+<tr><td>touch</td><td>type nul &gt;</td><td>yes this is the real windows command. yes it looks insane.</td></tr>
+<tr><td>cat</td><td>type</td><td>not the animal. the command.</td></tr>
+<tr><td>grep</td><td>findstr</td><td>regex support is... let's say "different"</td></tr>
+<tr><td>head</td><td>Get-Content -TotalCount N</td><td>PowerShell doing the heavy lifting as usual</td></tr>
+<tr><td>tail</td><td>Get-Content -Tail N</td><td>tail -f works with -Wait. yes it streams.</td></tr>
+<tr><td>find</td><td>dir /s /b</td><td></td></tr>
+<tr><td>pwd</td><td>cd</td><td>type cd with no args. it prints the path.</td></tr>
+<tr><td>clear</td><td>cls</td><td>cls is 3 letters vs 5. windows wins this one.</td></tr>
+<tr><td>ps</td><td>tasklist</td><td></td></tr>
+<tr><td>kill</td><td>taskkill /pid</td><td>-9 maps to /f for the really dead kind</td></tr>
+<tr><td>killall</td><td>taskkill /im</td><td>kill by process name</td></tr>
+<tr><td>which</td><td>where</td><td></td></tr>
+<tr><td>ifconfig</td><td>ipconfig</td><td>they added one letter. that is the entire change.</td></tr>
+<tr><td>wget</td><td>curl -O</td><td>windows 10+ has curl now. nobody told me for years.</td></tr>
+<tr><td>chmod</td><td>icacls</td><td>completely different permissions model. good luck.</td></tr>
+<tr><td>man</td><td>help</td><td>it tries its best. it really does try.</td></tr>
+<tr><td>sleep</td><td>timeout /t N /nobreak</td><td>the /nobreak stops users pressing a key to skip it</td></tr>
+<tr><td>df</td><td>wmic logicaldisk get ...</td><td>yes this is the real command. yes i know.</td></tr>
+<tr><td>history</td><td>doskey /history</td><td></td></tr>
+<tr><td>uname</td><td>ver</td><td></td></tr>
+<tr><td>whoami</td><td>whoami</td><td>the one command that is identical. cherish it.</td></tr>
+<tr><td>ssh / scp</td><td>ssh / scp</td><td>windows 10+ has openssh built in</td></tr>
+<tr><td>tar</td><td>tar</td><td>windows 10 build 17063+. yes tar. on windows.</td></tr>
+</table>
+
+<br>
+
+<p style="font-size:10px; color:#666666; text-align:center;">
+  * run <code>l2w --list</code> for the full list. yes there are more.
+  yes i wrote them all out. yes i need a different hobby. *
+</p>
+
+<div class="flame-bar"></div>
+
+<!-- ============================================================ AWARDS -->
+<p class="section-title">[ AWARDS AND ACHIEVEMENTS ]</p>
+
+<center>
+
+<p style="color:#888888; font-size:11px;">
+  These are completely real awards from completely real organisations.
+</p>
+
+<span class="star-spin">*</span>
+&nbsp;&nbsp;
+<span class="star-spin" style="animation-delay:0.3s;">*</span>
+&nbsp;&nbsp;
+<span class="star-spin" style="animation-delay:0.6s;">*</span>
+
+<br><br>
+
+<div class="award-box">
+  <span class="badge"></span>
+  <br><br>
+  <span style="color:#ffff00; font-size:10px; font-weight:bold;">
+    BEST LINUX-TO-WINDOWS<br>TRANSLATOR<br>(of sites i made)
+  </span>
+</div>
+
+<div class="award-box">
+  <span class="badge" style="background:radial-gradient(circle,#00ffff,#0088aa);
+    border-color:#00ffff; box-shadow:0 0 10px #00aaaa;"></span>
+  <br><br>
+  <span style="color:#00ffff; font-size:10px; font-weight:bold;">
+    MOST CREATIVE USE<br>OF LAZINESS<br>2026
+  </span>
+</div>
+
+<div class="award-box">
+  <span class="badge" style="background:radial-gradient(circle,#ff88ff,#aa00aa);
+    border-color:#ff00ff; box-shadow:0 0 10px #aa00aa;"></span>
+  <br><br>
+  <span style="color:#ff00ff; font-size:10px; font-weight:bold;">
+    AUTOMATED SOMETHING<br>THAT DID NOT NEED<br>TO BE AUTOMATED
+  </span>
+</div>
+
+<div class="award-box">
+  <span class="badge" style="background:radial-gradient(circle,#aaffaa,#006600);
+    border-color:#00ff00; box-shadow:0 0 10px #006600;"></span>
+  <br><br>
+  <span style="color:#00ff00; font-size:10px; font-weight:bold;">
+    GEOCITIES SPIRIT<br>AWARD<br>(self-awarded)
+  </span>
+</div>
+
+</center>
+
+<div class="rainbow-bar"></div>
+
+<!-- ============================================================ FAQ -->
+<p class="section-title">[ FREQUENTLY ASKED QUESTIONS ]</p>
+
+<span class="faq-q">Q: Is this a joke?</span>
+<span class="faq-a">A: The website is. The tool is real and it works.</span>
+
+<span class="faq-q">Q: Why not just use WSL?</span>
+<span class="faq-a">A: WSL is for people who want to solve the problem correctly. This is for people like me.</span>
+
+<span class="faq-q">Q: Does it work on Windows XP?</span>
+<span class="faq-a">A: No. Please update your computer. It is 2026. Windows XP end of life was 2014.</span>
+
+<span class="faq-q">Q: I typed rm -rf / and something bad happened.</span>
+<span class="faq-a">A: That one is on you. There is a --dry-run flag. It is mentioned several times on this page. Which you did not read.</span>
+
+<span class="faq-q">Q: Can I contribute?</span>
+<span class="faq-a">A: Yes. Pull requests are welcome. Please include tests or I will look at your PR for a long time and then close it.</span>
+
+<span class="faq-q">Q: Why does the website look like this?</span>
+<span class="faq-a"><span class="blink3" style="color:#ff00ff;">AESTHETIC.</span></span>
+
+<span class="faq-q">Q: Is this maintained?</span>
+<span class="faq-a">A: Optimistically yes.</span>
+
+<div class="flame-bar"></div>
+
+<!-- ============================================================ GUESTBOOK -->
+<p class="section-title">[ SIGN MY GUESTBOOK ]</p>
+
+<center>
+
+<span class="envelope"></span>
+&nbsp;&nbsp;&nbsp;
+<span class="envelope"></span>
+&nbsp;&nbsp;&nbsp;
+<span class="envelope"></span>
+
+<br><br>
+
+<table border="2" bordercolor="#ff00ff" bgcolor="#0a000a"
+       cellpadding="12" width="70%">
+<tr><td align="center">
+
+  <span style="color:#ff00ff; font-size:15px; font-weight:bold;">GUESTBOOK</span>
+
+  <br><br>
+
+  <span style="color:#888888; font-size:12px;">
+    Current entries: <b style="color:#ff0000;">0</b>
+  </span>
+
+  <br><br>
+
+  <span style="color:#aaaaaa; font-size:11px; line-height:1.8;">
+    Nobody has signed yet.<br>
+    Please. I am begging you.<br>
+    My mum does not count.<br>
+    She does not know what a guestbook is.<br>
+    She does not know what this website is.<br>
+    She does not know what a website is.
+  </span>
+
+  <br><br>
+
+  <a href="https://github.com/Andrew-most-likely/l2w/issues"
+     style="color:#ff00ff; font-weight:bold; font-size:12px;">
+    [ OPEN A GITHUB ISSUE INSTEAD. IT IS THE SAME THING. ]
+  </a>
+
+</td></tr>
+</table>
+
+</center>
+
+<div class="rainbow-bar"></div>
+
+<!-- ============================================================ WEBRING -->
+<p class="section-title">[ l2w WEBRING ]</p>
+
+<center>
+<table border="2" bordercolor="#00ffff" bgcolor="#001a1a"
+       cellpadding="10" width="65%">
+<tr><td align="center">
+
+  <span style="color:#00ffff; font-size:12px; font-weight:bold;">
+    You are a member of the l2w Linux Command Translation Webring!
+  </span>
+
+  <br><br>
+
+  <a href="#" style="color:#ff00ff;">&lt;&lt; PREV SITE</a>
+  &nbsp;&nbsp;|&nbsp;&nbsp;
+  <a href="#" style="color:#ffff00;">RANDOM SITE</a>
+  &nbsp;&nbsp;|&nbsp;&nbsp;
+  <a href="#" style="color:#ff00ff;">NEXT SITE &gt;&gt;</a>
+
+  <br><br>
+
+  <span style="color:#444444; font-size:10px;">
+    (there is only one site in this webring. it is this one.
+    the prev and next and random buttons all go here.)
+  </span>
+
+</td></tr>
+</table>
+</center>
+
+<div class="rainbow-bar"></div>
+
+<!-- ============================================================ LINKS -->
+<p class="section-title">[ COOL LINKS ]</p>
+
+<ul style="color:#00ff00; line-height:2.0;">
+  <li>
+    <a href="https://github.com/Andrew-most-likely/l2w">l2w on GitHub</a>
+    - The source code. All of it.
+  </li>
+  <li>
+    <a href="https://github.com/Andrew-most-likely/l2w/releases">Releases page</a>
+    - Download the .exe. Stop reading and just do it.
+  </li>
+  <li>
+    <a href="https://github.com/Andrew-most-likely/l2w/issues">Report a bug</a>
+    - If something is wrong it is almost certainly a bug and definitely not user error.
+    (it might be user error.)
+  </li>
+  <li>
+    <a href="https://en.wikipedia.org/wiki/Windows_Subsystem_for_Linux">WSL</a>
+    - The sensible solution to this exact problem. I chose not to use it.
+  </li>
+</ul>
+
+<div class="flame-bar"></div>
+
+<!-- ============================================================ FOOTER -->
+<center>
+
+<span class="star-spin">*</span>
+&nbsp;
+<span style="color:#888888; font-size:11px; font-family:Arial;">
+  l2w v1.0.0 &nbsp;|&nbsp; MIT License &nbsp;|&nbsp; &copy; 2026 Andrew
+  &nbsp;|&nbsp;
+  <span class="blink3" style="color:#00ff00;">Made with questionable judgment</span>
+</span>
+&nbsp;
+<span class="star-spin" style="animation-delay:0.9s;">*</span>
+
+<br><br>
+
+<marquee behavior="scroll" direction="right" scrollamount="2"
+         style="background:#001100; padding:3px; font-size:11px; color:#006600;">
+  This page last updated: April 2026 &nbsp;|&nbsp;
+  Best viewed at 800x600 in 256 colours &nbsp;|&nbsp;
+  No tables were harmed in the making of this website. Many tables were used. &nbsp;|&nbsp;
+  This website was hand-coded in Notepad.
+</marquee>
+
+<br>
+
+</center>
+
+</td></tr>
+</table>
+</center>
+
+</body>
+</html>

@@ -1,0 +1,14 @@
+{
+  "_comment": "User-defined command mappings for l2w. Entries here override or extend the built-in table.",
+  "commands": {
+    "example_custom": {
+      "windows": "MyTool.exe",
+      "description": "Example custom command - replace or delete this entry.",
+      "flag_map": {
+        "-v": "/verbose",
+        "-h": "/help"
+      },
+      "notes": "Optional notes about this mapping."
+    }
+  }
+}
