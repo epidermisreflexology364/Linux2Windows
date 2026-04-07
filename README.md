@@ -1,6 +1,6 @@
 # l2w - Linux to Windows
 
-![CI](https://github.com/Andrew-most-likely/l2w/actions/workflows/ci.yml/badge.svg)
+![CI](https://github.com/Andrew-most-likely/Linux2Windows/actions/workflows/ci.yml/badge.svg)
 ![Python](https://img.shields.io/badge/python-3.8%2B-blue)
 ![Platform](https://img.shields.io/badge/platform-Windows-lightgrey)
 ![License](https://img.shields.io/badge/license-MIT-green)
